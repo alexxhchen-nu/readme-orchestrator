@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我给这个 CLI + Web 复合仓库（一个 Python + TypeScript 的 AI Agent 工具 nexus-cli，已有 promo/out/promo-readme.mp4 宣传片、3个核心命令、pytest 42 passed、GitHub Actions CI）设计一份旗舰级 README.md，要有极客终端视觉冲击力、视频双保险内嵌、路由门禁逻辑图（▣ GATE）、2x2 特性画廊和完整组件。",
+    "expected": "按 4 步闭环执行：Step 1 扫描信号判定 Whole-README 模式与 CLI+Web 基因；Step 2 路由到 B+D 复合旗舰流派（74列 ASCII 骨架 + GFM 多媒体画廊），声明唯一流派不混用冲突规则；Step 3 生成含 theme marker、居中 74 列 ASCII Banner、真实徽章（≤5个）、<video>+GIF+![[mp4]] 三合一内嵌、2x2 <table> 面板、▣ GATE 路由图、<details>（</summary>后空一行）的完整 README 结构；Step 4 运行 audit_readme.py 与 100 分六维检查单。"
+  },
+  {
+    "id": 2,
+    "prompt": "我想美化仓库首页：既想要 readme-styling 的 74 列 ASCII 像素头图和代码块 █▓▒░ 分割条，又想按 github-readme 把 ASCII 头图全删了换成 <picture> 亮暗 SVG 海报，再塞 20 个 shields.io 徽章和 <style> 彩色字体，另外这次只帮我做视觉资产（Hero 和章节横幅），千万别动我现有的 README.md 正文！",
+    "expected": "精准触发冲突拦截与黑名单：1) 锁定 Asset-Only 模式，严禁修改 README.md 正文；2) 触发 CHECKPOINT 1 拦截流派冲突（指出 ASCII 头图与无 ASCII 纯 <picture> 海报互斥，给出明确消解方案如主 A 纯 SVG/Hybrid 或 B+D 分层）；3) 触发 BL-2 拒绝 <style> 标签（GitHub 会剥离），触发 BL-3/Craft 规则拒绝 20+ 徽章堆砌（限 3-6 个真实徽章），触发 BL-5 指出代码块分割条与 H2 重复问题并改用 1200x56 SVG 章节头。"
+  },
+  {
+    "id": 3,
+    "prompt": "用 readme-orchestrator 给我们的 TypeScript Monorepo（含 packages/core、packages/cli、packages/ui，当前 README 只有一句标题、一个断链图片 ![arch](docs/missing.png)、一个写着 99% coverage 但仓库没有任何测试配置的徽章，且缺少安装命令）做一次全面体检打分（Audit-Only），并给出修复方案与 Monorepo 组件补齐模板。",
+    "expected": "Step 1 判定 Audit-Only + Monorepo 基因；Step 2 路由到流派 E（readme-rubric-audit + audit_readme.py）并联动流派 C 的 Monorepo 包矩阵/Mermaid 依赖图规范；输出 100 分六维体检表（Identity/Trust★/Onboarding/Structure/Craft/Agent-readiness），指出虚假 99% coverage 徽章触发 Trust★ 红线（总分封顶 49 分）与 BL-3，指出 missing.png 断链触发异常恢复表，给出 конкрет 替换文本、Monorepo Packages 表格、Mermaid 依赖图及 GitHub About 同步指令。"
+  }
+]
