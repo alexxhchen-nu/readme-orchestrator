@@ -28,6 +28,14 @@ description: |
 2. 相对同级目录：`<本 SKILL.md 所在目录>/../<skill-name>/`
 3. 用户级目录回退：`~/.config/magpie/library/skills/<skill-name>/` → `~/.magpie/pi/skills/<skill-name>/` → `~/.claude/skills/<skill-name>/`
 
+| 子 Skill 目录 (`<SKILLS_ROOT>/...`) | 核心参考文档与模板 (`references/` & `templates/`) | 可执行脚本 (`scripts/`) |
+|---|---|---|
+| `beautify-github-readme/` | `references/{visual-direction,project-native-hero,svg-production,hybrid-svg-production,motion-production,github-readme-canvas,content-architecture}.md` | `scripts/audit_readme.py`、`scripts/render_motion_gif.py` |
+| `readme-styling/` | `SKILL.md`（74列画布、6套主题色板、框线面板、`▣ GATE` 路由图、`▰` 时间轴） | — |
+| `readme-generator-visual/` | `SKILL.md`（Capsule 波浪、3行徽章栏、Monorepo 矩阵、Health Scorecard、`readme-gen` 标记） | `readme-push-counter.sh` |
+| `github-readme/` | `SKILL.md`（`<picture>` 亮暗切换、`<table>` 画廊、`xychart-beta`、`<details>`、Designed Cards） | `evals/sandbox.sh` |
+| `readme-rubric-audit/` | `references/{checklist,anatomy,section-guide,badges,anti-patterns,ai-readers,project-types}.md`、`templates/{cli-tool,web-app,library,api-service,research-data,minimal}.md` | — |
+
 ---
 
 ## 标准执行工作流（4 步闭环，含模式门禁与显式输入/输出）
@@ -45,7 +53,7 @@ description: |
 | **3. Audit-Only** | 用户要求「打分/体检/挑刺/审查现有 README」 | 仅输出体检报告（除非用户追回要求「直接修」） | **`README.md` 及仓库内任何文件** | Step 1 → 2(E) → 4(双引擎体检报告) |
 | **4. Smart-Update** | 存量 README 含 `<!-- readme-gen:start:` 且仅增量迭代 | 仅替换标记块内部内容与 `.readme-gen.json` | 标记块之外的所有用户手写段落 | Step 1 → 2(C/F) → 3(增量合并) → 4 |
 
-- **输出**：显式声明 `[Mode: <模式>] + [Gene: CLI | Web/AI | SDK/Library | API/Service | Monorepo | Research]`。
+- **输出**：显式声明 `[Mode: <模式>] + [Gene: CLI | Web/AI | CLI+Web | SDK/Library | API/Service | Monorepo | Research]`。
 
 ### Step 2：智能流派路由与冲突拦截（Smart Archetype Routing）
 - **输入**：Step 1 锁定的 `[Mode]`、项目基因 `[Gene]` 与用户视觉偏好。
@@ -67,7 +75,7 @@ description: |
 - **输出**：明确打印 `[Selected Archetype: <代号>] + [Loaded Specialist: <路径>]`。
 
 ### Step 3：组件化构建与安全落盘（Component Build & Safe Write）
-- **输入**：Step 2 选定的流派规范与仓库实测事实（严禁捏造未验证的命令、特性或徽章）。
+- **输入**：Step 2 选定的流派规范、下方「核心组件与六维评分规约（§1–§2 蓝图 BP-1..BP-4）」与仓库实测事实（严禁捏造未验证的命令、特性或徽章）。
 - **动作**：
   1. **备份保护**：若处于 `Whole-README` 模式且原 `README.md` 非空（>20 行），写入前先备份至 `README.old.md`。
   2. 🔴 **CHECKPOINT 2（视频内嵌与跨平台兼容门禁）**：凡内嵌宣传视频，**必须用 `ffmpeg` 生成 `<10MB` 的 16:9 MP4（带 `-movflags +faststart`）与 `<10MB` 的 16:9 GIF**；由于 GitHub 网页端会过滤本地相对路径 `<video src="./...">` 标签，在提交给 GitHub 的 `README.md` 中必须以 **可点击 16:9 高清 GIF 预览图（`<a href="./promo/out/promo-readme.mp4"><img src="./promo/out/promo-readme.gif" width="100%"></a>`）或 GitHub `user-attachments` 视频链接** 作为主渲染层，并将 Obsidian 专用 `![[promo-readme.mp4]]` 置于 HTML 注释 `<!-- obsidian: ![[promo/out/promo-readme.mp4]] -->` 中，防止 GitHub 页面裸露 `![[...]]` 乱码文本。
@@ -82,7 +90,7 @@ description: |
      # 自动解析同级 beautify-github-readme 下的 audit_readme.py
      python "<SKILLS_ROOT>/beautify-github-readme/scripts/audit_readme.py" README.md
      ```
-  2. **100 分六维客观量表核对**（以 `readme-rubric-audit/references/checklist.md` 为唯一计分权威，流派 C 的 Health Scorecard 仅作仓库工程健康度装饰图表、不计入 README 质量分）：核查 Identity(15) + Trust★(25) + Onboarding(25) + Structure(15) + Craft(10) + Agent-readiness(10)。任一 ★ 项（安装命令不可跑 / 捏造特性或虚假徽章）不通过，**总分强制封顶 49 分**。
+  2. **100 分六维客观量表核对**（以 `readme-rubric-audit/references/checklist.md` 及下方「核心组件与六维评分规约 §3」为唯一计分权威，流派 C 的 Health Scorecard 仅作仓库工程健康度装饰图表、不计入 README 质量分）：核查 Identity(15) + Trust★(25) + Onboarding(25) + Structure(15) + Craft(10) + Agent-readiness(10)。任一 ★ 项（安装命令不可跑 / 捏造特性或虚假徽章）不通过，**总分强制封顶 49 分**。
   3. **GFM 语法与排版边界自检**：检查所有 `<details><summary>...</summary>` 下方是否强制空一行；检查 ASCII 图表是否包裹在无语言标签的裸代码块 ```` ``` ```` 中；检查徽章数量是否严格控制在每行 3–6 个。
   4. **GitHub About 同步检查**：核对 README 首段一句话简介（≤120 字符）是否与 GitHub Repo About 一致；若安装了 `gh` CLI，提供同步命令：`gh repo edit <owner>/<repo> --description "<一句话简介>"`。
 - **输出**：包含 `audit_readme.py` 输出、100 分六维得分明细表及已验证/未验证项说明的交付总结。
@@ -90,7 +98,7 @@ description: |
 
 ## 核心组件与六维评分规约（Component Blueprints & 100-Point Rubric Contract）
 
-> 本节既是 Step 3 构建时的**精确复制级组件模板仓**，也是 `FM-2`（当同级子 Skill 未安装或不可达时）的**自包含兜底执行规约**。
+> **优先级与占位符防呆铁律**：同级子 Skill 可达时优先加载对应子 Skill 细则，本节作为 Step 3 的**标准组件骨架**与 `FM-2`（子 Skill 不可达时）的**自包含兜底规约**。⚠️ **下方蓝图中的所有数值（如 `v1.0.0`、`P99 延迟降低 62%`、`42 passed`、`NEXUS_TIMEOUT_MS`）均为结构占位符，落盘前必须 100% 替换为仓库实测数据或删除，严禁原样照抄违反 `T2★`/`BL-3`！**
 
 ### 1. Whole-README 黄金漏斗骨架（10 秒首屏法则）
 按顺序组织（仅保留仓库实测有据的章节，严禁空壳 `TBD`）：
@@ -98,7 +106,7 @@ description: |
 
 ### 2. 核心视觉与交互组件蓝图（Copy-Pasteable Blueprints）
 
-#### C-1：74 列终端位图骨架 + 6 套主题色板 + `▣ GATE` 路由图 + `▰` 时间轴（流派 B / B+D）
+#### BP-1：74 列终端位图骨架 + 6 套主题色板 + `▣ GATE` 路由图 + `▰` 时间轴（流派 B / B+D）
 - **画布铁律**：全篇锁定唯一宽度 `CANVAS = 74` 列；窄元素左缩进精确计算为 `indent = floor((74 - width) / 2)`；**所有 ASCII 艺术必须放在无语言标签的裸代码块 ```` ``` ```` 中**。
 - **6 套预设主题色板**（首行写入 `<!-- architect-team:readme-theme=midnight -->`）：
   - `midnight`（默认深蓝）：Badge `2563EB` ｜ Mermaid `fill:#1e3a8a,stroke:#2563EB,color:#fff`
@@ -143,7 +151,7 @@ description: |
 ```
 ````
 
-#### C-2：`1200×320` 矢量 SVG Hero + `<picture>` 亮暗自适应 + `1200×56` SVG 章节头（流派 A / D / B+D）
+#### BP-2：`1200×320` 矢量 SVG Hero + `<picture>` 亮暗自适应 + `1200×56` SVG 章节头（流派 A / D / B+D）
 - **SVG 铁律**：固定 `viewBox="0 0 1200 320"`（Hero）或 `viewBox="0 0 1200 56"`（章节横幅 `assets/readme/sec-01-overview.svg`）；主标题字号 `≥28`、核心图示文字 `≥20`、辅助标签 `≥18`，四周安全边距 `≥24px`；严禁 `<script>`、`<foreignObject>`、外部字体。
 ```html
 <!-- 亮暗自适应 Hero 嵌入模板 -->
@@ -161,7 +169,7 @@ description: |
 </p>
 ```
 
-#### C-3：视频/GIF 双保险转码与三合一内嵌 + 2×2 `<table>` 画廊 + `<details>` 抽屉（流派 D / B+D）
+#### BP-3：视频/GIF 双保险转码与三合一内嵌 + 2×2 `<table>` 画廊 + `<details>` 抽屉（流派 D / B+D）
 - **FFmpeg `<10MB` 16:9 双生资产转码命令**：
 ```bash
 # 1. 压缩 16:9 MP4 (<10MB, 必带 +faststart)
@@ -218,7 +226,7 @@ ffmpeg -y -i promo/out/promo-readme.mp4 -vf "fps=12,scale=800:-1:flags=lanczos,s
 </details>
 ```
 
-#### C-4：三行徽章栏 + Monorepo 包矩阵与依赖图 + 增量合并标记（流派 C / F）
+#### BP-4：三行徽章栏 + Monorepo 包矩阵与依赖图 + 增量合并标记（流派 C / F）
 ````markdown
 <!-- readme-gen:start:badges -->
 <div align="center">
