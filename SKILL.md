@@ -24,9 +24,10 @@ description: |
 ## 跨 Runtime 路径解析约定（Multi-Runtime Skill Resolution）
 
 在任何兼容 Agent Skills 的 Runtime（Claude Code / Codex / Cursor / Magpie / OpenCode 等）中，按以下优先级定位同级子 Skill 与脚本（记为 `<SKILLS_ROOT>`）：
-1. Runtime 原生 URI：`skill://<skill-name>`（如 `skill://beautify-github-readme`）
-2. 相对同级目录：`<本 SKILL.md 所在目录>/../<skill-name>/`
-3. 用户级目录回退：`~/.config/magpie/library/skills/<skill-name>/` → `~/.magpie/pi/skills/<skill-name>/` → `~/.claude/skills/<skill-name>/`
+1. 仓库内置独立包目录（Standalone Clone 优先）：`<本 SKILL.md 所在目录>/bundled-skills/<skill-name>/`（内置脚本直接位于 `<本 SKILL.md 所在目录>/scripts/audit_readme.py`）
+2. Runtime 原生 URI：`skill://<skill-name>`（如 `skill://beautify-github-readme`）
+3. 相对同级目录：`<本 SKILL.md 所在目录>/../<skill-name>/`
+4. 用户级目录回退：`~/.config/magpie/library/skills/<skill-name>/` → `~/.magpie/pi/skills/<skill-name>/` → `~/.claude/skills/<skill-name>/`
 
 | 子 Skill 目录 (`<SKILLS_ROOT>/...`) | 核心参考文档与模板 (`references/` & `templates/`) | 可执行脚本 (`scripts/`) |
 |---|---|---|
