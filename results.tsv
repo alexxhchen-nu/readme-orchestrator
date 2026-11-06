@@ -1,0 +1,5 @@
+timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
+2026-11-05T22:05	6876c89	readme-orchestrator	-	54.5	baseline	all	初始评估(Dim5=4.0,Dim8=6.0,Dim3=4.0; runtime_warn=1 hardcoded path)	full_test
+2026-11-05T22:15	831eae0	readme-orchestrator	54.5	3-0 better (clear) · 76.2	keep	Dim2/3/4/6	Mode门禁+7流派路由+10行三级恢复表+8条BL+跨Runtime路径解析(runtime_warn=0)	paired
+2026-11-05T22:30	047f4f1	readme-orchestrator	76.2	3-0 better (clear) · 88.5	keep	Dim5/8	内联核心组件蓝图(BP-1..BP-4)与100分六维客观审计量表(Trust★封顶49分)+GitHub About同步	paired
+2026-11-05T22:45	ee5d4c6	readme-orchestrator	88.5	3-0 better (slight) · 89.3	keep	Dim6/7	补齐5大子Skill资源/脚本映射表+BP命名去重+占位符防呆铁律(HL-4触顶收官)	paired
