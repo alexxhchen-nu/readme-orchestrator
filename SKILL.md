@@ -1,7 +1,20 @@
 ---
 name: readme-orchestrator
 description: |
-  Intelligent README Design, Component Architecture & Audit Orchestrator. Invoke whenever the user asks to "write a README", "beautify README", "make an interactive/aesthetic README", "redesign repo homepage", "create README SVG/banner/gallery assets", or "audit README". Scans the repository, locks execution mode (Whole-README, Asset-Only, Audit-Only, Smart-Update), resolves style conflicts across 5 specialist README skills (beautify-github-readme, readme-styling, readme-generator-visual, github-readme, readme-rubric-audit), routes to the optimal archetype (A: Project-Native SVG/Hybrid, B: 74-Col Terminal Bitmap, C: Capsule-Wave/Monorepo, D: Interactive Media Gallery, E: 100-Point Rubric Audit, F: Clean SDK/Library, or B+D Flagship), and verifies output via asset/SVG checks + 100-point 6-dimension rubric. Do not use for multi-page docs sites (MkDocs/Docusaurus/VitePress) or inline source comments. Triggers: write readme/beautify readme/interactive readme/aesthetic readme/美化README/写README/设计README/readme skill/audit readme.
+  Intelligent README Design, Component Architecture & Audit Orchestrator.
+  Invoke whenever the user asks to "write a README", "beautify README",
+  "make an interactive/aesthetic README", "redesign repo homepage",
+  "create README SVG/banner/gallery assets", or "audit README".
+  Scans the repository, locks execution mode (Whole-README, Asset-Only,
+  Audit-Only, Smart-Update), resolves style conflicts across 5 specialist
+  README skills (beautify-github-readme, readme-styling,
+  readme-generator-visual, github-readme, readme-rubric-audit), routes to
+  the optimal archetype (A: Native SVG/Hybrid, B: 74-Col Terminal Bitmap,
+  C: Capsule-Wave/Monorepo, D: Interactive Media Gallery, E: 100-Point Audit,
+  F: Clean SDK/Library, or B+D Flagship), and verifies output via asset/SVG
+  checks + 100-point 6-dimension rubric. Do not use for multi-page docs sites
+  (MkDocs/Docusaurus/VitePress) or inline source comments.
+  Triggers: write readme/beautify readme/interactive readme/aesthetic readme/美化README/写README/设计README/readme skill/audit readme.
 ---
 
 # README Orchestrator — 智能 README 视觉、组件与审计总控台
@@ -74,6 +87,182 @@ description: |
   4. **GitHub About 同步检查**：核对 README 首段一句话简介（≤120 字符）是否与 GitHub Repo About 一致；若安装了 `gh` CLI，提供同步命令：`gh repo edit <owner>/<repo> --description "<一句话简介>"`。
 - **输出**：包含 `audit_readme.py` 输出、100 分六维得分明细表及已验证/未验证项说明的交付总结。
 
+
+## 核心组件与六维评分规约（Component Blueprints & 100-Point Rubric Contract）
+
+> 本节既是 Step 3 构建时的**精确复制级组件模板仓**，也是 `FM-2`（当同级子 Skill 未安装或不可达时）的**自包含兜底执行规约**。
+
+### 1. Whole-README 黄金漏斗骨架（10 秒首屏法则）
+按顺序组织（仅保留仓库实测有据的章节，严禁空壳 `TBD`）：
+`1. # H1 标题 + 隐式标记（Theme / readme-gen）` → `2. Hero 视觉锚点（SVG 海报 / 74列 ASCII / Capsule 波浪）+ ≤120字一句话定位` → `3. 精选徽章栏（每行 3–6 个真实徽章）` → `4. 实证视觉区（<video>+GIF 双保险 / 2×2 <table> 画廊 / 真实输出截图）` → `5. Quick Start（可一键复制的安装与最小可运行示例+期望输出）` → `6. 架构与控制流（Mermaid classDef 架构图 + ▣ GATE 路由门禁图）` → `7. 核心特性网格 / Monorepo Packages 矩阵` → `8. CLI/API 速查与 <details> 折叠配置` → `9. 状态时间轴（▰）/ 工程健康卡 + License + Footer`。
+
+### 2. 核心视觉与交互组件蓝图（Copy-Pasteable Blueprints）
+
+#### C-1：74 列终端位图骨架 + 6 套主题色板 + `▣ GATE` 路由图 + `▰` 时间轴（流派 B / B+D）
+- **画布铁律**：全篇锁定唯一宽度 `CANVAS = 74` 列；窄元素左缩进精确计算为 `indent = floor((74 - width) / 2)`；**所有 ASCII 艺术必须放在无语言标签的裸代码块 ```` ``` ```` 中**。
+- **6 套预设主题色板**（首行写入 `<!-- architect-team:readme-theme=midnight -->`）：
+  - `midnight`（默认深蓝）：Badge `2563EB` ｜ Mermaid `fill:#1e3a8a,stroke:#2563EB,color:#fff`
+  - `phosphor`（矩阵绿）：Badge `3FB950` ｜ Mermaid `fill:#14532d,stroke:#3FB950,color:#fff`
+  - `amber`（复古琥珀）：Badge `D97706` ｜ Mermaid `fill:#78350f,stroke:#D97706,color:#fff`
+  - `synthwave`（霓虹紫）：Badge `C026D3` ｜ Mermaid `fill:#701a75,stroke:#C026D3,color:#fff`
+  - `crimson`（警戒红）：Badge `DC2626` ｜ Mermaid `fill:#7f1d1d,stroke:#DC2626,color:#fff`
+  - `mono`（极简灰）：Badge `6B7280` ｜ Mermaid `fill:#374151,stroke:#6B7280,color:#fff`
+- **74 列 ASCII Banner + `▣ GATE` 路由逻辑图 + `▰` 状态时间轴标准模板**：
+````markdown
+<!-- architect-team:readme-theme=midnight -->
+```
+              ███    ██ ███████ ██   ██ ██    ██ ███████
+              ████   ██ ██       ██ ██  ██    ██ ██
+              ██ ██  ██ █████     ███   ██    ██ ███████
+              ██  ██ ██ ██       ██ ██  ██    ██      ██
+              ██   ████ ███████ ██   ██  ██████  ███████
+
+                ─── S U B T I T L E ───   v 1 . 0 . 0
+```
+
+```
+              Request / CLI Invocation
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │  ▣  MODE & AUTH GATE │
+              │  schema + token ok?  │
+              └──────────┬───────────┘
+                 ┌── no ─┴─ yes ──┐
+                 ▼                ▼
+           ✗ BLOCK (exit 2)   ✓ ALLOW (exit 0)
+                 ┊            dispatch worker
+                 └┄┄▶ fallback recovery tree
+```
+
+```
+       ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
+               v0.1.0 ─ initial core engine
+       ◆       v1.0.0 ─ flagship release + gate router (current)
+       ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
+```
+````
+
+#### C-2：`1200×320` 矢量 SVG Hero + `<picture>` 亮暗自适应 + `1200×56` SVG 章节头（流派 A / D / B+D）
+- **SVG 铁律**：固定 `viewBox="0 0 1200 320"`（Hero）或 `viewBox="0 0 1200 56"`（章节横幅 `assets/readme/sec-01-overview.svg`）；主标题字号 `≥28`、核心图示文字 `≥20`、辅助标签 `≥18`，四周安全边距 `≥24px`；严禁 `<script>`、`<foreignObject>`、外部字体。
+```html
+<!-- 亮暗自适应 Hero 嵌入模板 -->
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/readme/hero-dark.svg">
+    <img src="./assets/readme/hero-light.svg" width="100%" alt="ProjectName — 一句话核心价值">
+  </picture>
+</div>
+
+<!-- 1200×56 矢量章节横幅（替代带复制按钮的 ASCII 分割条） -->
+<div id="architecture"></div>
+<p align="center">
+  <img src="./assets/readme/sec-01-architecture.svg" width="100%" alt="01 // ARCHITECTURE & ROUTING">
+</p>
+```
+
+#### C-3：视频/GIF 双保险转码与三合一内嵌 + 2×2 `<table>` 画廊 + `<details>` 抽屉（流派 D / B+D）
+- **FFmpeg `<10MB` 16:9 双生资产转码命令**：
+```bash
+# 1. 压缩 16:9 MP4 (<10MB, 必带 +faststart)
+ffmpeg -y -i input.mp4 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2" -c:v libx264 -crf 26 -preset slow -movflags +faststart -an promo/out/promo-readme.mp4
+# 2. 生成高画质调色板 16:9 GIF (<10MB)
+ffmpeg -y -i promo/out/promo-readme.mp4 -vf "fps=12,scale=800:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=128[p];[s1][p]paletteuse=dither=bayer" promo/out/promo-readme.gif
+```
+- **三合一视频内嵌 + 2×2 画廊 + `<details>` 折叠卡（注意 `</summary>` 下方强制空行）**：
+```markdown
+<div align="center">
+  <!-- 若已有 GitHub user-attachments 视频 URL 则放首行单独成段；本地相对路径以可点击 16:9 GIF 为主渲染层 -->
+  <a href="./promo/out/promo-readme.mp4">
+    <img src="./promo/out/promo-readme.gif" width="100%" alt="Watch 16:9 HD Demo Video (MP4)">
+  </a>
+  <br>
+  <sub>🎬 点击上方 16:9 动图播放高清有声宣传片（<code>promo/out/promo-readme.mp4</code>）</sub>
+</div>
+<!-- obsidian: ![[promo/out/promo-readme.mp4]] -->
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>⚡ 1. 极速流式推理</h4>
+      <img src="./assets/readme/shot-01.png" width="100%" alt="Streaming benchmark">
+      <p>零拷贝管道，P99 延迟降低 62%。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h4>🛡️ 2. 三段式门禁容错</h4>
+      <img src="./assets/readme/shot-02.png" width="100%" alt="Gate fallback tree">
+      <p>显式编码 10 类异常分支与自动降级路径。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>🔀 3. 多模型智能路由</h4>
+      <img src="./assets/readme/shot-03.png" width="100%" alt="Smart routing">
+      <p>按任务基因自动匹配最优执行引擎。</p>
+    </td>
+    <td width="50%" valign="top">
+      <h4>📊 4. 100 分六维终检</h4>
+      <img src="./assets/readme/shot-04.png" width="100%" alt="100-pt audit">
+      <p>静态 SVG 几何校验 + 诚信红线自动封顶。</p>
+    </td>
+  </tr>
+</table>
+
+<details>
+<summary><strong>📦 展开查看多包管理器安装与高级环境变量配置</strong></summary>
+
+| 变量名 | 默认值 | 说明 |
+|---|---|---|
+| `NEXUS_TIMEOUT_MS` | `30000` | 单次路由超时阈值 |
+
+</details>
+```
+
+#### C-4：三行徽章栏 + Monorepo 包矩阵与依赖图 + 增量合并标记（流派 C / F）
+````markdown
+<!-- readme-gen:start:badges -->
+<div align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-2563EB?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/license-MIT-3FB950?style=flat-square" alt="license">
+  <img src="https://img.shields.io/badge/tests-42%20passed-3FB950?style=flat-square" alt="tests">
+  <img src="https://img.shields.io/github/actions/workflow/status/owner/repo/ci.yml?style=flat-square" alt="ci">
+</div>
+<!-- readme-gen:end:badges -->
+
+<!-- readme-gen:start:packages -->
+## Packages
+
+| Package | Version | Description | Role |
+|---|---|---|---|
+| [`@scope/core`](./packages/core) | `v1.0.0` | 核心状态机与类型定义 | Runtime Kernel |
+| [`@scope/cli`](./packages/cli) | `v1.0.0` | 命令行交互入口 | CLI Binary |
+| [`@scope/ui`](./packages/ui) | `v1.0.0` | Web 可视化监控面板 | Frontend App |
+
+```mermaid
+graph TD
+    Core["@scope/core"] --> CLI["@scope/cli"]
+    Core --> UI["@scope/ui"]
+    classDef themed fill:#1e3a8a,stroke:#2563EB,color:#fff
+    class Core,CLI,UI themed
+```
+<!-- readme-gen:end:packages -->
+````
+
+### 3. 100 分六维客观审计量表与 GitHub About 同步规约（流派 E / Step 4 权威标准）
+
+> **计分公式**：`总分 = (实得分数 / 适用满分) × 100`。分档：`90–100` 典范 · `75–89` 优秀 · `50–74` 待改进 · `<50` 不合格。
+> 🔴 **Trust★ 一票否决铁律**：凡带有 `★` 的核心诚信项（T1 安装命令不可运行、T2 捏造未实现特性或挂虚假徽章如无测试却标 99% coverage）任一挂科，**总分强制封顶 49 分（直接判 `<50` 不合格）**！
+
+| 维度（权重） | 编号 | 核查项（对照仓库真实文件验证，严禁只看文字） | 分值 |
+|---|---|---|---|
+| **1. Identity (15分)** | I1 / I2 / I3 | I1: H1 与包名/仓库名一致(5) · I2: 标题下 ≤120字一句话写清「做什么+给谁用」(7) · I3: 与 GitHub **About** 简介一致(3) | 5 / 7 / 3 |
+| **2. Trust ★ (25分)** | **T1★ / T2★** / T3 / T4 / T5 | **T1★: 安装与运行命令真实可跑，与 manifest/CLI 一致(10★)** · **T2★: 零虚假特性/零伪造徽章(5★)** · T3: 本地与外链零 404(5) · T4: 截图/视频反映当前版本(3) · T5: 维护状态诚实(2) | **10★ / 5★** / 5 / 3 / 2 |
+| **3. Onboarding (25分)** | O1 / O2 / O3 / O4 / O5 | O1: 一键复制安装代码块(8) · O2: 最小可运行示例**含期望输出**(8) · O3: 前置依赖标明精确版本与 OS(4) · O4: 匹配项目基因的视觉实证(3) · O5: 开发环境与用户安装分离(2) | 8 / 8 / 4 / 3 / 2 |
+| **4. Structure (15分)** | S1 / S2 / S3 / S4 | S1: 符合从宽到窄漏斗顺序，无未解释先贴安装(6) · S2: 深度文档外链不堆砌(4) · S3: >120行才配 TOC 且锚点有效(3) · S4: License 章节存在且链接 `LICENSE` 文件(2) | 6 / 4 / 3 / 2 |
+| **5. Craft (10分)** | C1 / C2 / C3 | C1: 徽章单块 3–6 个、风格统一、无失效红标、有 alt(4) · C2: 标记语言跨平台可移植(3) · C3: 排版易扫读、客观陈述事实与数据而非形容词吹嘘(3) | 4 / 3 / 3 |
+| **6. Agent-Readiness (10分)** | A1 / A2 / A3 | A1: 所有命令带完整非交互参数供 Agent 直接执行(4) · A2: 显式声明隐式环境约束(3) · A3: 不在 README 内联大段 Agent 提示词，外链 `AGENTS.md`(3) | 4 / 3 / 3 |
+
+- **Audit-Only 标准输出格式**：① 总分 + 分档 + 六维小计表（标明是否触发 ★ 49分封顶） ② 按读者影响排序的 Top 3–5 修复项（★ 项置顶，绑定编号如 `T2★`/`BL-3`） ③ 最严重问题的可直接替换 Markdown 代码块 ④ **GitHub About 同步指令**：`gh repo edit <owner>/<repo> --description "<一句话简介>"`。
 ---
 
 ## 🛟 失败模式与三级恢复表（Failure Mode & Fallback Tree）
