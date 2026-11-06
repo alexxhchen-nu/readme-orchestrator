@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="320" role="img" aria-labelledby="hero-dark-title">
+  <title id="hero-dark-title">README Orchestrator v2.0 — Intelligent README Design, Component Blueprints &amp; 100-Point Audit Engine</title>
+  <defs>
+    <linearGradient id="bg-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="16" fill="url(#bg-dark)" stroke="#1E293B" stroke-width="2"/>
+  <rect x="28" y="24" width="1144" height="4" rx="2" fill="url(#accent-grad)"/>
+
+  <!-- Left Column: Identity & Pitch -->
+  <rect x="44" y="52" width="230" height="30" rx="6" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1"/>
+  <text x="58" y="72" fill="#93C5FD" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14" font-weight="700">◆ AGENT SKILLS ORCHESTRATOR</text>
+
+  <text x="44" y="132" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="46" font-weight="900" letter-spacing="-0.02em">README Orchestrator</text>
+  <text x="44" y="172" fill="#CBD5E1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="20" font-weight="500">Mode Gate → 7-Archetype Router → BP-1..4 Blueprints → 100-Pt Quad Audit</text>
+  <text x="44" y="206" fill="#94A3B8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">Resolves mutual exclusions across 5 specialist README skills with zero rule collisions.</text>
+
+  <!-- Bottom Pill Bar -->
+  <rect x="44" y="236" width="185" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="62" y="262" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="700">▣ 4 Mode Gates</text>
+
+  <rect x="242" y="236" width="205" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="260" y="262" fill="#A78BFA" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="700">◇ 5 Sub-Skills</text>
+
+  <rect x="460" y="236" width="220" height="42" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+  <text x="478" y="262" fill="#34D399" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="700">✓ Trust★ Cap=49</text>
+
+  <!-- Right Column: Darwin 2.0 Score Card -->
+  <rect x="760" y="52" width="396" height="226" rx="14" fill="#0F172A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="788" y="86" fill="#94A3B8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="15" font-weight="700">DARWIN.SKILL 2.0 · PAIRED N=3 RATCHET</text>
+  <text x="788" y="156" fill="#F97316" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="64" font-weight="900">89.3</text>
+  <text x="932" y="156" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="26" font-weight="700">/100</text>
+  <rect x="1018" y="118" width="112" height="36" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="1"/>
+  <text x="1034" y="142" fill="#4ADE80" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" font-weight="800">+34.8 pts</text>
+
+  <text x="788" y="196" fill="#E2E8F0" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">Baseline 54.5 → R1 76.2 → R2 88.5 → R3 89.3</text>
+  <text x="788" y="226" fill="#94A3B8" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="15">9/9 Judges Voted Better · Runtime Warn = 0</text>
+  <text x="788" y="254" fill="#60A5FA" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="15">FM-1..10 Recovery Tree · BL-1..8 Blacklist</text>
+</svg>
