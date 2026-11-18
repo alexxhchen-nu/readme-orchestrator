@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "readme-orchestrator"
+version = "2.0.0"
+description = "Intelligent README design router, component blueprint library, and 100-point rubric auditor"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+  "sentry-sdk>=2.70,<3",
+]
+
+[project.optional-dependencies]
+motion = ["Pillow"]
+
+[tool.setuptools]
+packages = []
+py-modules = []

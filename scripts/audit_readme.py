@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -44,7 +45,36 @@ def audit_svg(path: Path) -> list[str]:
     return issues
 
 
+def _init_error_monitoring() -> None:
+    """Start Sentry only when SENTRY_DSN is set. Unset DSN leaves the CLI unchanged."""
+    if not os.environ.get("SENTRY_DSN", "").strip():
+        return
+    script_dir = Path(__file__).resolve().parent
+    search_dirs = [script_dir]
+    parents = script_dir.parents
+    # bundled-skills/<skill>/scripts -> repository scripts/
+    if len(parents) >= 3:
+        search_dirs.append(parents[2] / "scripts")
+    for directory in search_dirs:
+        if (directory / "sentry_setup.py").is_file():
+            directory_str = str(directory)
+            if directory_str not in sys.path:
+                sys.path.insert(0, directory_str)
+            break
+    try:
+        from sentry_setup import init_sentry
+    except ImportError:
+        print(
+            "SENTRY_DSN is set but sentry_setup.py was not found. "
+            "Error monitoring is disabled.",
+            file=sys.stderr,
+        )
+        return
+    init_sentry()
+
+
 def main() -> int:
+    _init_error_monitoring()
     if len(sys.argv) != 2:
         print("usage: audit_readme.py /path/to/README.md", file=sys.stderr)
         return 2

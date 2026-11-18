@@ -140,6 +140,29 @@ flowchart LR
 5. **`readme-rubric-audit`**（README Standard 贡献者）：提供流派 E/F 的 100 分六维客观量表（含 `Trust★` 挂科封顶 49 分铁律）、6 类项目骨架模板与 29 篇经典文献引用库（内置于 [`./bundled-skills/readme-rubric-audit/`](./bundled-skills/readme-rubric-audit/)）。
 6. **[`alchaincyf/darwin-skill`](https://github.com/alchaincyf/darwin-skill)**（作者：**花叔 Alchain**）与 **Microsoft Research SkillLens (`arXiv:2605.23899`) / SkillOpt (`arXiv:2605.23904`) / Karpathy `autoresearch`**：提供本技能的 9 维评估体系、Paired $N=3$ 多数决棘轮与 2x 成果卡渲染引擎。
 
+## 可选错误监控（Sentry）
+
+错误上报默认关闭，只有你主动设置环境变量后才会发送。仓库里没有写死任何 Sentry DSN。`scripts/audit_readme.py` 与 `scripts/render_motion_gif.py`（以及 `bundled-skills/beautify-github-readme/scripts/` 下的同名副本）仅在 `SENTRY_DSN` 非空时初始化 Sentry。未设置该变量时，脚本不会导入 SDK，行为与接入前一致。`send_default_pii` 关闭，不会附带栈帧局部变量，上报的 server name 固定为 `readme-orchestrator`，而不是本机主机名。
+
+1. 在 [Sentry](https://sentry.io) 中打开项目（还没有的话，新建一个 **Python** 项目）。
+2. 在 **Settings → Projects → 你的项目 → Client Keys (DSN)** 复制 DSN。同一页面的地址是 `https://sentry.io/settings/<组织 slug>/projects/<项目 slug>/keys/`。
+3. 按清单安装 SDK，并在运行脚本的环境里导出 DSN：
+
+```bash
+python3 -m pip install -e .
+# 渲染 GIF 还需要：python3 -m pip install -e ".[motion]"
+
+export SENTRY_DSN='https://<public-key>@<org-ingest-host>/<project-id>'
+# 可选。不设置时 SDK 使用默认环境 production。
+export SENTRY_ENVIRONMENT=production
+# 可选。不设置时为 readme-orchestrator@2.0.0。
+export SENTRY_RELEASE=readme-orchestrator@2.0.0
+# 可选。默认 0，只上报错误。设为 0 到 1 之间的小数才会抽样性能追踪。
+export SENTRY_TRACES_SAMPLE_RATE=0
+```
+
+若设置了 `SENTRY_DSN` 但未安装 `sentry-sdk`，脚本会在 stderr 打印警告，然后继续完成审计或渲染。
+
 ## 开源协议（License）
 
 本项目采用 [MIT License](./LICENSE) 开源；[`./bundled-skills/`](./bundled-skills/) 下内置的各专精子技能完整保留其原有署名与协议（详见 [`ATTRIBUTIONS.md`](./ATTRIBUTIONS.md)）。
