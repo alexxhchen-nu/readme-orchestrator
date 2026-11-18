@@ -196,12 +196,15 @@ Every execution passes through **4 explicit checkpoints (`🔴 CHECKPOINT 0–3`
 ├── 📄 README_CN.md                              # Pure Simplified Chinese Flagship Edition (纯中文旗舰版)
 ├── 📄 ATTRIBUTIONS.md                           # Full upstream credits, authors, papers & 29 cited sources
 ├── 📄 LICENSE                                   # MIT License
+├── 📄 pyproject.toml                            # Python manifest (`sentry-sdk` dependency; Pillow optional)
 ├── 📄 test-prompts.json                         # 3 benchmark evaluation prompts (Whole-README / Asset-Only / Audit-Only)
 ├── 📄 results.tsv                               # Darwin 2.0 Paired N=3 judge ratchet log
 ├── 🖼️ result-card.png                           # 2x Retina Darwin 2.0 evolution report card (54.5 → 89.3)
 ├── 📂 scripts/
 │   ├── 📄 audit_readme.py                       # Static local image & SVG geometry validator
-│   └── 📄 render_motion_gif.py                  # GitHub-safe animated GIF renderer
+│   ├── 📄 render_motion_gif.py                  # GitHub-safe animated GIF renderer
+│   └── 📄 sentry_setup.py                       # Opt-in Sentry init (no-op unless SENTRY_DSN is set)
+├── 📂 tests/                                    # unittest suite for the auditor and Sentry opt-in
 ├── 📂 assets/readme/
 │   ├── 🖼️ hero-dark.svg & hero-light.svg        # 1200×320 <picture> dark/light adaptive SVG heroes
 │   ├── 🖼️ sec-01..05-*.svg                      # Five 1200×56 SVG section banners
@@ -271,6 +274,29 @@ Full license notices and the 29 cited documentation standards are documented in 
        ◆       v2.0.0 ─ Round 3: 5 bundled skills + attributions + bilingual (89.3/100)
        ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰
 ```
+
+## Error monitoring (optional) · 可选错误监控
+
+Crash reporting is off until you opt in. This repository does not contain a Sentry DSN. `scripts/audit_readme.py` and `scripts/render_motion_gif.py` (and the copies under `bundled-skills/beautify-github-readme/scripts/`) initialize Sentry only when `SENTRY_DSN` is set. With that variable unset, the SDK is not imported and the scripts keep their previous behavior. `send_default_pii` is off, stack-frame local variables are not attached, and the reported server name is `readme-orchestrator` rather than the machine hostname.
+
+1. In [Sentry](https://sentry.io), open the project (create a **Python** project if you do not have one yet).
+2. Copy the DSN from **Settings → Projects → your project → Client Keys (DSN)**. The same page is `https://sentry.io/settings/<org-slug>/projects/<project-slug>/keys/`.
+3. Install the SDK from the project manifest and export the DSN in the environment that runs the scripts:
+
+```bash
+python3 -m pip install -e .
+# GIF rendering additionally needs: python3 -m pip install -e ".[motion]"
+
+export SENTRY_DSN='https://<public-key>@<org-ingest-host>/<project-id>'
+# Optional. The SDK defaults environment to production when this is unset.
+export SENTRY_ENVIRONMENT=production
+# Optional. Defaults to readme-orchestrator@2.0.0.
+export SENTRY_RELEASE=readme-orchestrator@2.0.0
+# Optional. Defaults to 0 (errors only). Set between 0 and 1 to sample performance traces.
+export SENTRY_TRACES_SAMPLE_RATE=0
+```
+
+If `SENTRY_DSN` is set but `sentry-sdk` is not installed, the script prints a warning on stderr and continues the audit or render.
 
 ## License · 开源协议
 

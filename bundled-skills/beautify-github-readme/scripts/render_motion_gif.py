@@ -7,6 +7,7 @@ import argparse
 import copy
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -538,7 +539,36 @@ def encode_gif(
         )
 
 
+def _init_error_monitoring() -> None:
+    """Start Sentry only when SENTRY_DSN is set. Unset DSN leaves the CLI unchanged."""
+    if not os.environ.get("SENTRY_DSN", "").strip():
+        return
+    script_dir = Path(__file__).resolve().parent
+    search_dirs = [script_dir]
+    parents = script_dir.parents
+    # bundled-skills/<skill>/scripts -> repository scripts/
+    if len(parents) >= 3:
+        search_dirs.append(parents[2] / "scripts")
+    for directory in search_dirs:
+        if (directory / "sentry_setup.py").is_file():
+            directory_str = str(directory)
+            if directory_str not in sys.path:
+                sys.path.insert(0, directory_str)
+            break
+    try:
+        from sentry_setup import init_sentry
+    except ImportError:
+        print(
+            "SENTRY_DSN is set but sentry_setup.py was not found. "
+            "Error monitoring is disabled.",
+            file=sys.stderr,
+        )
+        return
+    init_sentry()
+
+
 def run(args: argparse.Namespace) -> None:
+    _init_error_monitoring()
     input_svg = args.input_svg.expanduser().resolve()
     output_gif = args.output_gif.expanduser().resolve()
     spec_path = args.spec.expanduser().resolve()

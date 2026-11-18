@@ -4,3 +4,6 @@ __pycache__/
 Thumbs.db
 *.bak.*
 README.old.md
+tests/.sentry-stub-log.json
+*.egg-info/
+.venv/
